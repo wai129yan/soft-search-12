@@ -2,8 +2,8 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header">
-                Add New Product
+            <div class="card-header bg-secondary text-white">
+                <h5 class="mb-0 font-weight-bold">Add New Product</h5>
             </div>
             <div class="card-body">
                 <form action="{{ route('product.store')}}" method="post" enctype="multipart/form-data">

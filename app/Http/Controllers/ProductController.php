@@ -12,14 +12,14 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('product.product-list', compact('products'));
-    }   
-    
+    }
+
     public function create()
     {
         $categories = Category::all();
         return view('product.create', compact('categories'));
     }
-    
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -27,12 +27,30 @@ class ProductController extends Controller
             "description" => "nullable | string",
             "price" => "required | numeric",
             "quantity" => "required | numeric",
-            // "category_id" => "required | exists:categories,id"
-            
+            "status"=> "required",
+            "category_id" => "required ",
+            "image" => "nullable | image | mimes:jpg,jpeg,png ",
         ]);
+        if($request->hasFile("image")){
+            $validated["image"] = $request->file("image")->store("products","public");
+        }
 
-        Product::create($request->all());
+       Product::create($validated);
 
         return redirect()->route('product.index')->with('success', 'Product created successfully');
     }
+
+    public function show($id)
+    {
+        $products = Product::findOrFail($id); //မတွေ့ဘူးဆိုရင် → Laravel က default အနေဖြင့် show 404 page
+        return view('product.show', compact('products'));
+    }
+
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        return view('product.edit', compact('product', 'categories'));
+    }
 }
+
