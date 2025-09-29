@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+
+@section('title', 'Add New Product')
+
 @section('content')
     <div class="container">
         <div class="card">

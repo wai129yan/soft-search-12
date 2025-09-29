@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+
+@section('title', 'Product Details')
+
 @section('content')
 
     <div class="container mt-2">
@@ -26,7 +29,12 @@
                                 <img src="{{ asset('storage/' . $products->image) }}"
                                      alt="{{ $products->name }}"
                                      class="img-fluid rounded"
-                                     style="max-width: 300px;">
+                                     style="max-width: 300px;"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                                <div class="alert alert-warning" style="display: none;">
+                                    <small>Image not found: {{ $products->image }}</small><br>
+                                    <small>Full path: {{ asset('storage/' . $products->image) }}</small>
+                                </div>
                             </div>
                         @else
                             <div class="text-center">
@@ -39,7 +47,7 @@
         </div>
         <div class="m-2">
             <a href="{{ route('product.index') }}" class="btn btn-secondary">Back to List</a>
-            <a href="" class="btn btn-primary">Edit</a>
+            <a href="{{ route('product.edit', $products->id) }}" class="btn btn-primary">Edit</a>
         </div>
     </div>
 @endsection
