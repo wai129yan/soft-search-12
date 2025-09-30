@@ -1,6 +1,7 @@
 <div class="mb-3">
     <label class="form-label">Product Name *</label>
     <input type="text" name="name" class="form-control" value="{{ old('name', $product->name ?? '') }}">
+    {{--Value adding =>  User က form ကို fill လုပ်တဲ့အခါ validation error တက်သွားရင် တန်ဖိုးတွေ ပြန်ဖြည့်စရာမလိုဘဲ အလိုအလျှောက် ပြန်ပြတယ်။ --}}
     @error('name')
         <span class="text-danger">{{ $message }}</span>
     @enderror

@@ -23,6 +23,8 @@
                         </p>
                         <p><strong>Category:</strong> {{ $products->category ? $products->category->name : 'N/A' }}</p>
                     </div>
+
+                    {{-- image showing --}}
                     <div class="col-md-6">
                         @if($products->image)
                             <div class="text-center">
@@ -45,6 +47,7 @@
                 </div>
             </div>
         </div>
+        {{-- image showing --}}
         <div class="m-2">
             <a href="{{ route('product.index') }}" class="btn btn-secondary">Back to List</a>
             <a href="{{ route('product.edit', $products->id) }}" class="btn btn-primary">Edit</a>
