@@ -1,3 +1,98 @@
+# Product Management System
+
+A simple web application built with Laravel for managing products, including CRUD operations, soft deletes, search, and pagination.
+
+## Overview
+
+This project is a product inventory system where users can create, view, edit, delete, restore, and permanently delete products. Products are associated with categories and support image uploads. It uses Laravel's Eloquent ORM, soft deletes, and Blade templating.
+
+## Features
+
+- **Product CRUD**: Create, read, update, and delete products with validation.
+- **Soft Deletes**: Temporarily delete products and view them in a trash list with search and pagination.
+- **Restore and Permanent Delete**: Restore soft-deleted products or delete them permanently, including associated images.
+- **Search and Filter**: Search products by name, description, status, or category name; optional filter by status.
+- **Pagination**: Paginated lists for active and trashed products (10 per page).
+- **Image Upload**: Upload and manage product images stored in the public disk.
+- **Category Association**: Products linked to categories via foreign key (basic category model included).
+
+## Requirements
+
+- PHP >= 8.1
+- Composer
+- Laravel >= 10
+- A database (e.g., MySQL, SQLite)
+- Node.js and npm (for asset compilation with Vite)
+
+## Installation
+
+1. Clone the repository:
+   ```
+   git clone <your-repo-url>
+   cd soft-search-12
+   ```
+
+2. Install PHP dependencies:
+   ```
+   composer install
+   ```
+
+3. Install JS dependencies:
+   ```
+   npm install
+   ```
+
+4. Copy environment file and configure (update database settings in .env):
+   ```
+   cp .env.example .env
+   ```
+
+5. Generate application key:
+   ```
+   php artisan key:generate
+   ```
+
+6. Run database migrations:
+   ```
+   php artisan migrate
+   ```
+
+7. (Optional) Seed the database if seeders are set up:
+   ```
+   php artisan db:seed
+   ```
+
+8. Compile assets:
+   ```
+   npm run dev
+   ```
+
+9. Start the development server:
+   ```
+   php artisan serve
+   ```
+
+The application will be available at `http://localhost:8000`.
+
+## Usage
+
+- **View All Products**: Navigate to `/products` – supports search (?search=term) and pagination.
+- **Create Product**: Go to `/create-product` to add a new product with category selection and image upload.
+- **View Single Product**: `/show-product/{id}`
+- **Edit Product**: `/edit-product/{id}`
+- **Delete Product** (Soft): Use the delete action on product list – moves to trash.
+- **View Trashed Products**: `/deleted-products` – supports search and pagination; restore or permanently delete from here.
+
+For detailed routes, check `routes/web.php`. All operations include success messages via redirects.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+
+---
+
+## Laravel Framework Information
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
